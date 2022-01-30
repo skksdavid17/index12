@@ -1,62 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="main1.css">
-</head>
-<body> 
-      
-    <div class="alert-box" id="alert">
-        <p id='title'>Alert 박스</p>
-        <button id="close">닫기</button>
-        <button id="BR">배경색 빨간색</button>
-        <button id="BG">배경색 초록색</button>
-        <button id="BB">배경색 파란색</button>
-        <button id="TR">글자색 빨간색</button>
-        <button id="TG">글자색 초록색</button>
-        <button id="TB">글자색 파란색</button>
-    </div>
-    <button onclick="알림창열기('아이디를 입력하세요')">버튼1</button>
-    <button onclick="알림창열기('비번을 입력하세요')">버튼2</button>
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Image Distortion Effects</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="container"></div>
 
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script>
 
-    <script>
-        document.getElementById('close').addEventListener('click',function(){
-            document.getElementById('alert').style.display = 'none';
-        });
-        document.getElementById('BR').addEventListener('click',function(){
-            document.getElementById('alert').style.background = "red";
-        });
-        document.getElementById('BG').addEventListener('click',function(){
-            document.getElementById('alert').style.background = 'green';
-        });
-        document.getElementById('BB').addEventListener('click',function(){
-            document.getElementById('alert').style.background = 'blue';
-        });
-        document.getElementById('TR').addEventListener('click',function(){
-            document.getElementById('alert').style.color = "red";
-        });
-        document.getElementById('TG').addEventListener('click',function(){
-            document.getElementById('alert').style.color = "green";
-        });
-        document.getElementById('TB').addEventListener('click',function(){
-            document.getElementById('alert').style.color = "blue";
-        });
-        
+			let container = document.querySelector('.container');
+			for (var i = 0; i <= 1600; i++) {
+				var dotEl = document.createElement('div');
+				dotEl.classList.add('dot');
+				container.appendChild(dotEl);
+			}
 
-        function 알림창(구멍){
-            document.getElementById('alert').style.display=구멍
-        }
+			var dot = document.querySelectorAll('.dot')
+			var animation = anime.timeline({
+		      targets: dot,
+		      easing: 'easeInOutExpo',
+		      delay: anime.stagger(1, {start: 5}),
+		      loop: true,
+		    });
 
-
-        function 알림창열기(a){
-            document.getElementById('title').innerHTML=a;
-            document.getElementById('alert').style.display='block'
-        }
-
-    </script>
-
-</body>
+		    animation
+		      .add({
+		        scale: 0,
+		        rotate:  function() { return anime.random(-360,360);},
+		        translateX:  function() { return anime.random(360,2100);},
+		        translateY:  function() { return anime.random(360,-2100);},
+		      	duration: function() { return anime.random(1000,1500); },
+		      })
+		      .add({
+		        scale: 1,
+		        rotate: 0,
+		        translateX: 0,
+		        translateY: 0,
+		      	duration: function() { return anime.random(1000,1500); },
+		      })
+		</script>
+	</body>
+</html>

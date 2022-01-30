@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
+*
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body
+{
+	min-height: 100vh;
+    overflow: hideen;
+	background: rgb(250, 246, 246);
+}
+.container
+{
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+.container .dot
+{
+	position: relative;
+	width: 5vw;
+	height: 5vh;
+	background: rgb(250, 24, 24);
+    border: 1px solid #111;
+	box-sizing: border-box;
+	transform-style: preserve-3d;
+	background: url(bg.jpg);
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center;
+}
